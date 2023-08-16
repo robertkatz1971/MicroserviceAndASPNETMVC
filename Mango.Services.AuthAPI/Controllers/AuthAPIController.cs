@@ -21,13 +21,13 @@ namespace Mango.Services.AuthAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
         {
-            var result = await _authService.Register(model);
+            var registrationResponse = await _authService.Register(model);
 
-            if (!string.IsNullOrEmpty(result))
+            if (!string.IsNullOrEmpty(registrationResponse))
             {
                 //error
                 _responseDto.IsSuccess = false;
-                _responseDto.Message = result;
+                _responseDto.Message = registrationResponse;
                 return BadRequest(_responseDto);
             }
             else
@@ -39,9 +39,20 @@ namespace Mango.Services.AuthAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto model)
         {
-            return Ok();
+            var loginResponse = await _authService.Login(model);
+
+            if (loginResponse.User == null)
+            {
+                _responseDto.IsSuccess = false;
+                _responseDto.Message = "Username or password is not correct.";
+                return BadRequest(_responseDto);
+            }
+
+            _responseDto.Result = loginResponse;
+           
+            return Ok(_responseDto);
         }
     }
 }
