@@ -27,7 +27,7 @@ namespace Mango.Services.AuthAPI.Service
 
         public async Task<bool> AssignRoles(string email, string roleName)
         {
-            var user = _appDbContext.ApplicationUsers.SingleOrDefault(u => u.Email.ToLower() == email.ToLower());
+            var user = _appDbContext.ApplicationUsers.SingleOrDefault(u => u.Email != null && u.Email.ToLower() == email.ToLower());
 
             if(user != null)
             {
@@ -44,7 +44,7 @@ namespace Mango.Services.AuthAPI.Service
 
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
         {
-            var user = _appDbContext.ApplicationUsers.SingleOrDefault(u => u.UserName.ToLower()  == loginRequestDto.UserName.ToLower());
+            var user = _appDbContext.ApplicationUsers.SingleOrDefault(u => u.UserName != null && u.UserName.ToLower()  == loginRequestDto.UserName.ToLower());
 
             bool isValid = (user != null && await _userManager.CheckPasswordAsync(user, loginRequestDto.Password));
 

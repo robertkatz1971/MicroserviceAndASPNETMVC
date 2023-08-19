@@ -30,7 +30,7 @@ namespace Mango.Web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = ApiType.POST,
-                Url = StaticDetails.CouponAPIBase + "login",
+                Url = StaticDetails.AuthAPIBase + "login",
                 Data = loginRequestDto
             });
         }
