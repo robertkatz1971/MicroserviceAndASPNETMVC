@@ -1,9 +1,18 @@
 ﻿using Mango.Web.Service;
 using Mango.Web.Service.IService;
 using Mango.Web.Utility;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.ExpireTimeSpan = TimeSpan.FromHours(10);
+            options.LoginPath = "/Auth/Login/";
+            options.AccessDeniedPath = "/Auth/AccessDenied/";
+        });
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -37,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

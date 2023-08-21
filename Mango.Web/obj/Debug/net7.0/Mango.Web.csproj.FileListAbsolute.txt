@@ -361,3 +361,8 @@
 /Users/robertkatz/Projects/Mango/Mango.Web/obj/Debug/net7.0/Mango.Web.pdb
 /Users/robertkatz/Projects/Mango/Mango.Web/obj/Debug/net7.0/Mango.Web.genruntimeconfig.cache
 /Users/robertkatz/Projects/Mango/Mango.Web/obj/Debug/net7.0/ref/Mango.Web.dll
+/Users/robertkatz/Projects/Mango/Mango.Web/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/robertkatz/Projects/Mango/Mango.Web/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/robertkatz/Projects/Mango/Mango.Web/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/robertkatz/Projects/Mango/Mango.Web/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/robertkatz/Projects/Mango/Mango.Web/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll

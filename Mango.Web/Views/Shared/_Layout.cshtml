@@ -40,10 +40,17 @@
                         }
                         else
                         {
-                            <li class="navitem">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Hello, @User.Identity.Name </a>
                             </li>
+                            using (Html.BeginForm("Logout", "Auth", null))
+                            {
+                                <li class="nav-item">
+                                    <input class="nav-link" type="submit" value="Logout" />
+                                </li>
+                            }
                         }
+
                     </ul>
                 </div>
             </div>

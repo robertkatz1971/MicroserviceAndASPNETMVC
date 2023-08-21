@@ -57,8 +57,10 @@ namespace Mango.Services.AuthAPI.Service
                 };
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
+
             //if user was found, generate JWT token
-            var token = _jwtTokenGenerator.GenerateToken(user);
+            var token = _jwtTokenGenerator.GenerateToken(user, roles);
 
             UserDto userDto = new()
             {
@@ -73,7 +75,7 @@ namespace Mango.Services.AuthAPI.Service
                 User = userDto,
                 Token = token
             };
-
+      
         }
 
         public async Task<string> Register(RegistrationRequestDto registrationRequestDto)
