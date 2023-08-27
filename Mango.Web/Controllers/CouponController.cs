@@ -75,14 +75,14 @@ namespace Mango.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                 TempData["success"] = "Coupon deleted successfully";
-                return RedirectToAction(nameof(CouponIndex));
+                
             }
             else
             {
                 TempData["error"] = response?.Message;
             }
 
-            return View();
+            return RedirectToAction(nameof(CouponIndex));
         }
     }
 }

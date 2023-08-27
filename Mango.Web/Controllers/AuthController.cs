@@ -49,10 +49,11 @@ namespace Mango.Web.Controllers
                    
                 return RedirectToAction("Index", "Home");
             }
-
-            ModelState.AddModelError("CustomerError", loginResponse?.Message + string.Empty);
-            return View(model);
-   
+            else
+            {
+                TempData["error"] = loginResponse?.Message;
+                return View(model);
+            }
         }
 
         [HttpGet]
@@ -89,7 +90,13 @@ namespace Mango.Web.Controllers
                     TempData["success"] = "Registered successfully";
                     return RedirectToAction(nameof(Login));
                 }
+                
             }
+            else
+            {
+                TempData["error"] = registrationResult?.Message;
+            }
+
             var roleList = new List<SelectListItem>()
                 {
                     new SelectListItem { Text=StaticDetails.RoleAdmin, Value=StaticDetails.RoleAdmin },
