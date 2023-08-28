@@ -1,8 +1,7 @@
-﻿using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using Mango.Services.CouponAPI;
-using Mango.Services.CouponAPI.Data;
 using Mango.Services.CouponAPI.Extensions;
+using Mango.Services.ProductAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -80,3 +79,4 @@ void ApplyMigration()
         db.Database.Migrate();
     }
 }
+
