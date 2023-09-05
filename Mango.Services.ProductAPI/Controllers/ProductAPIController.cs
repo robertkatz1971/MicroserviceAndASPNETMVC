@@ -48,7 +48,8 @@ namespace Mango.Services.ProductAPI.Controllers
             return _responseDto;
         }
 
-        [HttpGet("id:int")]
+        [HttpGet]
+        [Route("{id:int}")]
         public async Task<ActionResult<ResponseDto>> GetProduct(int id)
         {
             try
